@@ -11,7 +11,7 @@ import SwiftUI
 struct moodiqApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MenuView()
         }
     }
 }
