@@ -5,6 +5,9 @@
 //  Created by Emi Sanzmor on 26/07/25.
 //
 
+
+// FIRST OPTION:
+
 import SwiftUI
 
 struct MoodOptionsView: View {
@@ -15,19 +18,37 @@ struct MoodOptionsView: View {
    
     var body: some View {
         ZStack {
-            StarfieldBackground(isAnimating: $isAnimating, showStars: $showStars)
+            Color.black.ignoresSafeArea()
             
             
-            VStack (spacing: 15){
+            VStack (spacing: 16){
                 ForEach(Array(moodOptions.enumerated()), id: \.element.title) { index, option in
-                    Text(option.title.uppercased())
+                    HStack {
+                        if index % 2 == 0 {
+                            Button(action: {
+                                // TODO: - Add action
+                            }) {
+                                
+                                Text(option.title)
+                                    .padding(.leading, 50)
+                                Spacer()
+                            }
+                            
+                        } else {
+                            Spacer()
+                            Button(action: {
+                                // TODO: - Add action
+                            }) {
+                                Text(option.title)
+                                    .padding(.trailing, 50)
+                            }
+                            
+                        }
+                    }
                         .foregroundColor(.white)
-                        .font(.custom("HelveticaNeue-Medium", size: 25))
+                        .font(.custom("HelveticaNeue", size: 25))
                         .opacity(showOptions ? 1 : 0)
-                    
-                    // TODO: - Update text entry animation
-                    
-                        .animation(.easeInOut(duration: 2.8).delay(Double(index) * 0.1), value: showOptions)
+                        .animation(.easeInOut(duration: 3).delay(Double(index) * 0.5), value: showOptions)
                 }
                 
                 

@@ -1,43 +1,60 @@
 import SwiftUI
 
-// MARK: - Stars Menu animation
+// MARK: - Main Menu View
 
 struct MenuView: View {
     @State private var isAnimating = false
     @State private var showText = false
     @State private var showStars = false
+    @State private var showMoodView = false
     
-     
+    
     var body: some View {
         ZStack {
-            StarfieldBackground(isAnimating: $isAnimating, showStars: $showStars)
+            Color.black.ignoresSafeArea()
             
-            VStack (spacing: 8) {
-                Text("How do you")
-                    .font(.custom("HelveticaNeue", size: 28))
-                    .foregroundColor(.white)
+            ZStack {
+                StarfieldBackground(isAnimating: $isAnimating, showStars: $showStars)
                 
-                Text("feel today?")
-                    .font(.custom("HelveticaNeue", size: 28))      .foregroundColor(.white)
-                
+                VStack (spacing: 8) {
+                    Text("How do you")
+                        .font(.custom("HelveticaNeue", size: 28))
+                        .foregroundColor(.white)
+                    
+                    Text("feel today?")
+                        .font(.custom("HelveticaNeue", size: 28))      .foregroundColor(.white)
+                    
+                }
+                .opacity(showText ? 1 : 0)
+                .animation(.easeInOut(duration: 1.5), value: showText)
             }
+            .opacity(showMoodView ? 0 : 1)
+            .animation(.easeInOut(duration: 1.2), value: showMoodView)
             
+            // MoodOptionView is always visible, its opacity is controlled by showMoodView to create a crossfade transition between views
+            MoodOptionView()
+                .opacity(showMoodView ? 1 : 0)
+                .animation(.easeInOut(duration: 3.0), value: showMoodView)
             
-            
-            .opacity(showText ? 1 : 0)
-            .animation(.easeInOut(duration: 1.5), value: showText)
-            
-        }.onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isAnimating = true
-                showStars = true
-            }
-            
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                showText = true
-            }
+        } .onAppear{
+            introAnimations()
         }
+    }
+    
+    private func introAnimations() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            isAnimating = true
+            showStars = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            showText = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+            showMoodView = true
+        }
+        
     }
 }
 
