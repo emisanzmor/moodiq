@@ -38,8 +38,8 @@ struct StarfieldBackground: View {
                     let star = randomData[index]
                     
                     Circle()
-                        .fill(Color.white.opacity(0.5))
-                        .frame(width: 3, height: 3)
+                        .fill(Color.white.opacity(0.8))
+                        .frame(width: 1, height: 1)
                         .opacity(showStars ? 1 : 0)
                         .offset(
                             x: isAnimating ? star.x : 0,

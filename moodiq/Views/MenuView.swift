@@ -20,9 +20,12 @@ struct MenuView: View {
                     Text("How do you")
                         .font(.custom("HelveticaNeue", size: 28))
                         .foregroundColor(.white)
+                        .fontWeight(.light)
                     
                     Text("feel today?")
                         .font(.custom("HelveticaNeue", size: 28))      .foregroundColor(.white)
+                        .fontWeight(.light)
+                    
                     
                 }
                 .opacity(showText ? 1 : 0)

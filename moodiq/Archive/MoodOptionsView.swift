@@ -6,7 +6,9 @@
 //
 
 
-// FIRST OPTION:
+// ALTERNATIVE OPTION FOR MOOD OPTION VIEW:
+
+/*
 
 import SwiftUI
 
@@ -31,6 +33,8 @@ struct MoodOptionsView: View {
                                 
                                 Text(option.title)
                                     .padding(.leading, 50)
+                                    .fontWeight(.light)
+                                    .font(.custom("HelveticaNeue", size: 20))
                                 Spacer()
                             }
                             
@@ -41,6 +45,8 @@ struct MoodOptionsView: View {
                             }) {
                                 Text(option.title)
                                     .padding(.trailing, 50)
+                                    .fontWeight(.light)
+                                    .font(.custom("HelveticaNeue", size: 20))
                             }
                             
                         }
@@ -74,3 +80,4 @@ struct MoodOptionsView: View {
 #Preview {
     MoodOptionsView()
 }
+*/
