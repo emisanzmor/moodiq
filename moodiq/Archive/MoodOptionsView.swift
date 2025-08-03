@@ -17,7 +17,7 @@ struct MoodOptionsView: View {
     @State private var showStars = false
     @State private var showOptions = false
     let moodOptions = MoodDataModel.moodOptions
-   
+    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -51,10 +51,10 @@ struct MoodOptionsView: View {
                             
                         }
                     }
-                        .foregroundColor(.white)
-                        .font(.custom("HelveticaNeue", size: 25))
-                        .opacity(showOptions ? 1 : 0)
-                        .animation(.easeInOut(duration: 3).delay(Double(index) * 0.5), value: showOptions)
+                    .foregroundColor(.white)
+                    .font(.custom("HelveticaNeue", size: 25))
+                    .opacity(showOptions ? 1 : 0)
+                    .animation(.easeInOut(duration: 3).delay(Double(index) * 0.5), value: showOptions)
                 }
                 
                 
@@ -80,4 +80,5 @@ struct MoodOptionsView: View {
 #Preview {
     MoodOptionsView()
 }
+
 */

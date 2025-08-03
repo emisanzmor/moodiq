@@ -15,15 +15,15 @@ struct StarfieldBackground: View {
     // Bindings
     @Binding var isAnimating: Bool
     @Binding var showStars: Bool
-  
+    
     
     private let randomData = (0..<400).map { index in
         (x: CGFloat.random(in: -40...40),
          y: CGFloat.random(in: -40...40),
          duration: Double.random(in: 2.0...4.0),
-        delay: Double(index) * 0.01)
+         delay: Double(index) * 0.01)
     }
-
+    
     
     
     var body: some View {
@@ -49,7 +49,7 @@ struct StarfieldBackground: View {
                             .easeInOut(duration: star.duration)
                             .repeatForever(autoreverses: true)
                             .delay(star.delay),
-                                   value: isAnimating
+                            value: isAnimating
                         )
                 }
             }
