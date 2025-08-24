@@ -3,10 +3,9 @@ import SwiftUI
 // MARK: - Main Menu View
 
 struct MenuView: View {
-    @State private var isAnimating = false
     @State private var showText = false
-    @State private var showStars = false
     @State private var showMoodView = false
+    
     
     
     var body: some View {
@@ -14,7 +13,6 @@ struct MenuView: View {
             Color.black.ignoresSafeArea()
             
             ZStack {
-                StarfieldBackground(isAnimating: $isAnimating, showStars: $showStars)
                 
                 VStack (spacing: 8) {
                     Text("How do you")
@@ -37,7 +35,7 @@ struct MenuView: View {
             // MoodOptionView is always visible, its opacity is controlled by showMoodView to create a crossfade transition between views
             MoodOptionView()
                 .opacity(showMoodView ? 1 : 0)
-                .animation(.easeInOut(duration: 3.0), value: showMoodView)
+                .animation(.easeInOut(duration: 2.0), value: showMoodView)
             
         } .onAppear{
             introAnimations()
@@ -45,16 +43,11 @@ struct MenuView: View {
     }
     
     private func introAnimations() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            isAnimating = true
-            showStars = true
-        }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             showText = true
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
             showMoodView = true
         }
         
